@@ -8,6 +8,7 @@ import { Wallet, TrendingUp, ArrowUpRight, ArrowDownLeft } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { AssetAllocation } from "@/components/flux/AssetAllocation";
 import { PerformanceChart } from "@/components/flux/PerformanceChart";
+import { PortfolioTx } from "@/components/flux/PortfolioTx";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -97,18 +98,7 @@ export default function PortfolioPage() {
             </div>
           </Card>
           
-          <Card title="RECENT ACTIVITY" subtitle="Portfolio events">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
-                <ArrowDownLeft size={16} color="#10b981" />
-                <div style={{ fontSize: '0.75rem' }}>Received 500 USDC from Binance</div>
-              </div>
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
-                <ArrowUpRight size={16} color="var(--accent-cyan)" />
-                <div style={{ fontSize: '0.75rem' }}>Swapped 0.5 ETH for 1,240 USDC</div>
-              </div>
-            </div>
-          </Card>
+          <PortfolioTx />
         </div>
       </div>
     </div>
