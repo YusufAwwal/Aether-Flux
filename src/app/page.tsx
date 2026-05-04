@@ -6,6 +6,8 @@ import { FluxVisualizer } from "@/components/flux/FluxVisualizer";
 import { FluxStream } from "@/components/flux/FluxStream";
 import { MetricsGrid } from "@/components/flux/MetricsGrid";
 import { WhaleAlert } from "@/components/flux/WhaleAlert";
+import { GasHeatmap } from "@/components/flux/GasHeatmap";
+import { ProtocolStats } from "@/components/flux/ProtocolStats";
 import { Activity, Zap, Shield, Globe } from "lucide-react";
 
 export default function Home() {
@@ -32,11 +34,12 @@ export default function Home() {
             <FluxVisualizer />
           </div>
           <FluxStream />
+          <GasHeatmap />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <Terminal />
+          <ProtocolStats />
           <div style={{ 
-            flex: 1, 
             background: 'var(--bg-card)', 
             borderRadius: '8px', 
             border: 'var(--glass-border)',

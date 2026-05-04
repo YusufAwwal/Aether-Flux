@@ -1,0 +1,50 @@
+.container {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.vol {
+  font-size: 0.625rem;
+  color: var(--text-dim);
+}
+
+.bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  margin-top: 0.5rem;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent-cyan);
+}
