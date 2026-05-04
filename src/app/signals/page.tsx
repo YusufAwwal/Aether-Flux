@@ -2,8 +2,9 @@
 
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Card } from "@/components/ui/Card";
-import { Brain, TrendingUp, AlertTriangle, Lightbulb } from "lucide-react";
+import { Brain, TrendingUp, AlertTriangle, Lightbulb, Activity, Shield } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
+import { SentimentHeatmap } from "@/components/flux/SentimentHeatmap";
 
 export default function SignalsPage() {
   return (
@@ -55,23 +56,26 @@ export default function SignalsPage() {
           </div>
         </Card>
 
-        <Card title="PREDICTIVE MODELS" subtitle="Active neural nodes">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {[
-              { name: 'SENTIMENT_ENGINE_v4', status: 'SYNCHRONIZED', accuracy: '94.2%' },
-              { name: 'ON_CHAIN_ORACLE', status: 'ACTIVE', accuracy: '88.5%' },
-              { name: 'WHALE_WATCHER_NODE', status: 'SCANNING', accuracy: '91.0%' },
-            ].map((node, i) => (
-              <div key={i} style={{ borderLeft: '2px solid var(--accent-cyan)', paddingLeft: '1rem' }}>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>{node.name}</div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.25rem' }}>
-                  <span style={{ fontSize: '0.625rem', color: 'var(--accent-cyan)' }}>{node.status}</span>
-                  <span className="mono" style={{ fontSize: '0.625rem', color: 'var(--text-dim)' }}>ACCURACY: {node.accuracy}</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <SentimentHeatmap />
+          <Card title="PREDICTIVE MODELS" subtitle="Active neural nodes">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {[
+                { name: 'SENTIMENT_ENGINE_v4', status: 'SYNCHRONIZED', accuracy: '94.2%' },
+                { name: 'ON_CHAIN_ORACLE', status: 'ACTIVE', accuracy: '88.5%' },
+                { name: 'WHALE_WATCHER_NODE', status: 'SCANNING', accuracy: '91.0%' },
+              ].map((node, i) => (
+                <div key={i} style={{ borderLeft: '2px solid var(--accent-cyan)', paddingLeft: '1rem' }}>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700 }}>{node.name}</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.25rem' }}>
+                    <span style={{ fontSize: '0.625rem', color: 'var(--accent-cyan)' }}>{node.status}</span>
+                    <span className="mono" style={{ fontSize: '0.625rem', color: 'var(--text-dim)' }}>ACCURACY: {node.accuracy}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </Card>
+              ))}
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   );
