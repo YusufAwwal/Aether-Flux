@@ -9,6 +9,7 @@ import { SentimentHeatmap } from "@/components/flux/SentimentHeatmap";
 import { RiskGauge } from "@/components/flux/RiskGauge";
 import { NeuralPulse } from "@/components/flux/NeuralPulse";
 import { NeuralNetwork } from "@/components/flux/NeuralNetwork";
+import { SignalHistory } from "@/components/flux/SignalHistory";
 import { InsightModal } from "@/components/flux/InsightModal";
 
 export default function SignalsPage() {
@@ -93,6 +94,8 @@ export default function SignalsPage() {
           </Card>
         </div>
       </div>
+
+      <SignalHistory />
 
       <InsightModal 
         isOpen={!!selectedInsight} 
