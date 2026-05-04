@@ -84,6 +84,21 @@ export const FluxVisualizer = () => {
       <div className={styles.overlay}>
         <div className={styles.title}>Network Flux Velocity</div>
         <div className={styles.value}>1.42 GB/S</div>
+        
+        <div style={{ marginTop: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <div>
+            <div className={styles.title}>Handshake Latency</div>
+            <div className={styles.value} style={{ fontSize: '0.75rem' }}>14MS</div>
+          </div>
+          <div>
+            <div className={styles.title}>Peer Connectivity</div>
+            <div className={styles.value} style={{ fontSize: '0.75rem' }}>128 NODES</div>
+          </div>
+          <div>
+            <div className={styles.title}>Global Hashrate</div>
+            <div className={styles.value} style={{ fontSize: '0.75rem' }}>452.1 TH/S</div>
+          </div>
+        </div>
       </div>
     </div>
   );
