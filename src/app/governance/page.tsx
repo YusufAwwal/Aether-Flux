@@ -9,6 +9,7 @@ import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { VoteModal } from "@/components/flux/VoteModal";
 import { ProposalDiscussion } from "@/components/flux/ProposalDiscussion";
 import { DelegatePower } from "@/components/flux/DelegatePower";
+import { GovernanceScore } from "@/components/flux/GovernanceScore";
 import { CreateProposalModal } from "@/components/flux/CreateProposalModal";
 import { useState } from 'react';
 
@@ -110,6 +111,7 @@ export default function GovernancePage() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <GovernanceScore />
           <DelegatePower />
           <Card title="VOTING HISTORY" subtitle="Your governance activity">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
