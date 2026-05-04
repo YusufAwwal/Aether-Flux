@@ -8,11 +8,11 @@ import clsx from 'clsx';
 import styles from './Sidebar.module.css';
 
 const NAV_ITEMS = [
-  { icon: LayoutDashboard, label: 'Overview', href: '/' },
-  { icon: Activity, label: 'Flux Stream', href: '/flux' },
-  { icon: Wallet, label: 'Portfolio', href: '/portfolio' },
-  { icon: Shield, label: 'Governance', href: '/governance' },
-  { icon: Settings, label: 'Settings', href: '/settings' },
+  { icon: LayoutDashboard, label: 'NETWORK OVERVIEW', href: '/' },
+  { icon: Activity, label: 'FLUX STREAM', href: '/flux' },
+  { icon: Wallet, label: 'PORTFOLIO HUB', href: '/portfolio' },
+  { icon: Shield, label: 'GOVERNANCE', href: '/governance' },
+  { icon: Settings, label: 'SYSTEM SETTINGS', href: '/settings' },
 ];
 
 export const Sidebar = () => {
