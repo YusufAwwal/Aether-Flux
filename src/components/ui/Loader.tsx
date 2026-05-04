@@ -23,11 +23,13 @@ export const Loader = ({ onComplete }: { onComplete: () => void }) => {
 
     const statusTimer = setInterval(() => {
       const statuses = [
-        'Connecting to Ethereum node...',
-        'Decrypting secure handshake...',
-        'Synchronizing state variables...',
-        'Allocating memory buffers...',
-        'Ready.'
+        'BOOTING NEURAL_KERNEL_v4.2.0...',
+        'ESTABLISHING ENCRYPTED RPC_TUNNEL...',
+        'SYNCING CHAIN_TOPOLOGY...',
+        'CALIBRATING YIELD_SENSORS...',
+        'VERIFYING GOVERNANCE_SIGNATURES...',
+        'OPTIMIZING HUD_BUFFERS...',
+        'HUD_READY.'
       ];
       setStatus(statuses[Math.floor((progress / 100) * statuses.length)] || 'Ready.');
     }, 400);
