@@ -8,6 +8,7 @@ import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { SentimentHeatmap } from "@/components/flux/SentimentHeatmap";
 import { RiskGauge } from "@/components/flux/RiskGauge";
 import { NeuralPulse } from "@/components/flux/NeuralPulse";
+import { NeuralNetwork } from "@/components/flux/NeuralNetwork";
 import { InsightModal } from "@/components/flux/InsightModal";
 
 export default function SignalsPage() {
@@ -70,6 +71,7 @@ export default function SignalsPage() {
         </Card>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <NeuralNetwork />
           <RiskGauge />
           <SentimentHeatmap />
           <Card title="PREDICTIVE MODELS" subtitle="Active neural nodes">
