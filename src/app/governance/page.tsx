@@ -6,9 +6,12 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Shield, Vote, Clock, CheckCircle2 } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
+import { VoteModal } from "@/components/flux/VoteModal";
+import { useState } from 'react';
 
 export default function GovernancePage() {
   const { isConnected } = useAccount();
+  const [selectedProposal, setSelectedProposal] = useState<any>(null);
 
   if (!isConnected) {
     return (
@@ -86,7 +89,7 @@ export default function GovernancePage() {
                     <Clock size={14} />
                     {prop.ends}
                   </div>
-                  <Button variant="outline" size="sm">VOTE</Button>
+                  <Button variant="outline" size="sm" onClick={() => setSelectedProposal(prop)}>VOTE</Button>
                 </div>
               </div>
             ))}
@@ -104,6 +107,12 @@ export default function GovernancePage() {
           </div>
         </Card>
       </div>
+
+      <VoteModal 
+        isOpen={!!selectedProposal} 
+        onClose={() => setSelectedProposal(null)} 
+        proposal={selectedProposal} 
+      />
     </div>
   );
 }
