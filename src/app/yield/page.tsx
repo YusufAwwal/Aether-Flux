@@ -13,6 +13,7 @@ import { YieldHealth } from "@/components/flux/YieldHealth";
 import { ValidatorStats } from "@/components/flux/ValidatorStats";
 import { YieldTimeline } from "@/components/flux/YieldTimeline";
 import { YieldRadar } from "@/components/flux/YieldRadar";
+import { YieldTVL } from "@/components/flux/YieldTVL";
 
 export default function YieldPage() {
   const { isConnected } = useAccount();
@@ -96,6 +97,7 @@ export default function YieldPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <YieldRadar />
           <YieldComparison />
+          <YieldTVL />
           <ValidatorStats />
           <YieldCalculator />
           <Card title="OPTIMIZER LOGS" subtitle="Neural engine activity">
