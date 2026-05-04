@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { icon: Activity, label: 'FLUX STREAM', href: '/flux' },
   { icon: ShieldAlert, label: 'WHALE ALERTS', href: '/alerts' },
   { icon: Wallet, label: 'PORTFOLIO HUB', href: '/portfolio' },
+  { icon: Zap, label: 'YIELD OPTIMIZER', href: '/yield' },
   { icon: Shield, label: 'GOVERNANCE', href: '/governance' },
   { icon: Settings, label: 'SYSTEM SETTINGS', href: '/settings' },
 ];
