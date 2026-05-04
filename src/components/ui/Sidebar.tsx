@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Activity, Wallet, Shield, Settings, Zap, ShieldAlert } from 'lucide-react';
+import { LayoutDashboard, Activity, Wallet, Shield, Settings, Zap, ShieldAlert, Brain } from 'lucide-react';
+import { motion } from 'framer-motion';
 import clsx from 'clsx';
 import styles from './Sidebar.module.css';
 
@@ -45,11 +46,16 @@ export const Sidebar = () => {
         })}
       </nav>
 
-      <div className={styles.footer}>
-        <div className={styles.status}>
-          <div className={styles.pulse} />
-          <span className="mono">NETWORK: ETHEREUM</span>
+      <div style={{ marginTop: 'auto', padding: '1.5rem', borderTop: 'var(--glass-border)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ position: 'relative', width: '8px', height: '8px' }}>
+          <motion.div 
+            style={{ position: 'absolute', width: '100%', height: '100%', borderRadius: '50%', background: '#10b981' }}
+            animate={{ scale: [1, 2, 1], opacity: [1, 0, 1] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+          <div style={{ position: 'absolute', width: '100%', height: '100%', borderRadius: '50%', background: '#10b981' }} />
         </div>
+        <div style={{ fontSize: '0.625rem', fontWeight: 800, letterSpacing: '0.1em', color: 'var(--text-dim)' }}>SYSTEM_HEALTH: NOMINAL</div>
       </div>
     </aside>
   );
