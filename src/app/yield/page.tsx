@@ -9,6 +9,7 @@ import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { YieldCalculator } from "@/components/flux/YieldCalculator";
 import { YieldFlow } from "@/components/flux/YieldFlow";
 import { YieldComparison } from "@/components/flux/YieldComparison";
+import { YieldHealth } from "@/components/flux/YieldHealth";
 
 export default function YieldPage() {
   const { isConnected } = useAccount();
@@ -102,6 +103,8 @@ export default function YieldPage() {
           </Card>
         </div>
       </div>
+
+      <YieldHealth />
     </div>
   );
 }
