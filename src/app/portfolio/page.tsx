@@ -15,10 +15,11 @@ import { NetWorthTicker } from "@/components/flux/NetWorthTicker";
 import { NFTGallery } from "@/components/flux/NFTGallery";
 import { TokenSearch } from "@/components/flux/TokenSearch";
 import { TradeGas } from "@/components/flux/TradeGas";
+import { RefreshButton } from "@/components/ui/RefreshButton";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
-  const { data: ethBalance } = useBalance({ 
+  const { data: ethBalance, refetch } = useBalance({ 
     address,
     query: { refetchInterval: 10000 } 
   });
@@ -45,6 +46,12 @@ export default function PortfolioPage() {
       <PageHeader 
         title="Portfolio Hub" 
         description="Comprehensive asset tracking and yield performance analysis."
+        actions={
+          <div style={{ display: 'flex', gap: '0.75rem' }}>
+            <RefreshButton onRefresh={() => refetch()} />
+            <Button variant="outline">Export CSV</Button>
+          </div>
+        }
       />
 
       <div style={{ marginBottom: '2.5rem', display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr', gap: '1.5rem', alignItems: 'end' }}>
