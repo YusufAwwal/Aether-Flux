@@ -1,66 +1,55 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { PageHeader } from "@/components/ui/PageHeader";
+import { StatWidget } from "@/components/ui/StatWidget";
+import { Button } from "@/components/ui/Button";
+import { Activity, Zap, Shield, Globe } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      <PageHeader 
+        title="Network Overview" 
+        description="Real-time pulse of the decentralized web."
+        actions={
+          <>
+            <Button variant="outline" icon={<Globe size={16} />}>Scan Network</Button>
+            <Button icon={<Zap size={16} />}>Quick Action</Button>
+          </>
+        }
+      />
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem', marginBottom: '2.5rem' }}>
+        <StatWidget label="Gas Price" value="24 Gwei" change={-12.5} icon={<Activity size={20} />} />
+        <StatWidget label="TPS" value="1,420" change={5.2} icon={<Zap size={20} />} />
+        <StatWidget label="Whale Activity" value="High" change={2.1} icon={<Shield size={20} />} />
+        <StatWidget label="Nodes Active" value="12,842" change={0.4} icon={<Globe size={20} />} />
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
+        <div style={{ 
+          height: '400px', 
+          background: 'var(--bg-card)', 
+          borderRadius: '8px', 
+          border: 'var(--glass-border)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'var(--text-dim)'
+        }}>
+          [ Flux Activity Visualizer Placeholder ]
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div style={{ 
+          height: '400px', 
+          background: 'var(--bg-card)', 
+          borderRadius: '8px', 
+          border: 'var(--glass-border)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'var(--text-dim)'
+        }}>
+          [ Recent Alerts Placeholder ]
         </div>
-      </main>
+      </div>
     </div>
   );
 }
