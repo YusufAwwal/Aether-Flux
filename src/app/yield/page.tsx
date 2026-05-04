@@ -10,6 +10,7 @@ import { YieldCalculator } from "@/components/flux/YieldCalculator";
 import { YieldFlow } from "@/components/flux/YieldFlow";
 import { YieldComparison } from "@/components/flux/YieldComparison";
 import { YieldHealth } from "@/components/flux/YieldHealth";
+import { ValidatorStats } from "@/components/flux/ValidatorStats";
 
 export default function YieldPage() {
   const { isConnected } = useAccount();
@@ -91,6 +92,7 @@ export default function YieldPage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <YieldComparison />
+          <ValidatorStats />
           <YieldCalculator />
           <Card title="OPTIMIZER LOGS" subtitle="Neural engine activity">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxHeight: '200px', overflowY: 'auto' }}>
