@@ -10,6 +10,7 @@ import { AssetAllocation } from "@/components/flux/AssetAllocation";
 import { PerformanceChart } from "@/components/flux/PerformanceChart";
 import { PortfolioTx } from "@/components/flux/PortfolioTx";
 import { YieldBreakdown } from "@/components/flux/YieldBreakdown";
+import { TokenIcon } from "@/components/ui/TokenIcon";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -67,9 +68,7 @@ export default function PortfolioPage() {
               { symbol: 'LINK', name: 'Chainlink', balance: '45.12', value: '$842.12', color: '#375bd2' },
             ].map((asset, i) => (
               <div key={i} style={{ background: 'var(--bg-card)', padding: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: asset.color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.625rem' }}>
-                  {asset.symbol[0]}
-                </div>
+                <TokenIcon symbol={asset.symbol} color={asset.color} />
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 600 }}>{asset.name}</div>
                   <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>{asset.balance} {asset.symbol}</div>
