@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { StatWidget } from "@/components/ui/StatWidget";
 import { Button } from "@/components/ui/Button";
 import { ConnectWallet } from "@/components/ui/ConnectWallet";
+import { Terminal } from "@/components/flux/Terminal";
 import { Activity, Zap, Shield, Globe } from "lucide-react";
 
 export default function Home() {
@@ -38,17 +39,8 @@ export default function Home() {
         }}>
           [ Flux Activity Visualizer Placeholder ]
         </div>
-        <div style={{ 
-          height: '400px', 
-          background: 'var(--bg-card)', 
-          borderRadius: '8px', 
-          border: 'var(--glass-border)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'var(--text-dim)'
-        }}>
-          [ Recent Alerts Placeholder ]
+        <div style={{ height: '400px' }}>
+          <Terminal />
         </div>
       </div>
     </div>
