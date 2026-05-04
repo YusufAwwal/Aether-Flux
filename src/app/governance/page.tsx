@@ -8,6 +8,7 @@ import { Shield, Vote, Clock, CheckCircle2 } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { VoteModal } from "@/components/flux/VoteModal";
 import { ProposalDiscussion } from "@/components/flux/ProposalDiscussion";
+import { ProposalTimeline } from "@/components/flux/ProposalTimeline";
 import { DelegatePower } from "@/components/flux/DelegatePower";
 import { GovernanceScore } from "@/components/flux/GovernanceScore";
 import { CreateProposalModal } from "@/components/flux/CreateProposalModal";
@@ -69,6 +70,7 @@ export default function GovernancePage() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <ProposalTimeline />
           <Card title="ACTIVE PROPOSALS" subtitle="Decentralized voting queue">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {[
