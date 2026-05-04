@@ -1,0 +1,32 @@
+.container {
+  background: var(--bg-card);
+  border: var(--glass-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 4px;
+  margin-top: 1rem;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+
+.cell:hover {
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-size: 0.625rem;
+  color: var(--text-dim);
+}
