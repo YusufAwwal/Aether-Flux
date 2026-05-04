@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.svg {
+  transform: rotate(-90deg);
+}
+
+.background {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.progress {
+  fill: none;
+  stroke: var(--accent-cyan);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s ease;
+  filter: drop-shadow(0 0 5px var(--accent-cyan-glow));
+}
+
+.valueContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: block;
+}
+
+.label {
+  font-size: 0.625rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
