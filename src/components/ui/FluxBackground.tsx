@@ -48,6 +48,20 @@ export const FluxBackground = () => {
         style={{ top: '20%', left: '30%' }}
       />
 
+      <motion.div 
+        className={styles.glow}
+        animate={{
+          x: ['10%', '-10%', '10%'],
+          y: ['10%', '-10%', '10%'],
+        }}
+        transition={{
+          duration: 25,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+        style={{ bottom: '20%', right: '30%', background: 'var(--accent-purple)', opacity: 0.05 }}
+      />
+
       <div className={styles.vignette} />
     </div>
   );
