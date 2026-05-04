@@ -1,69 +1,46 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useAccount, useConnect, useDisconnect, useBalance } from 'wagmi';
+import { Wallet, LogOut, Loader2 } from 'lucide-react';
 import { Button } from './Button';
-import { Wallet, LogOut, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 export const ConnectWallet = () => {
-  const [address, setAddress] = useState<string | null>(null);
-  const [isConnecting, setIsConnecting] = useState(false);
+  const { address, isConnected, isConnecting } = useAccount();
+  const { connect, connectors } = useConnect();
+  const { disconnect } = useDisconnect();
+  const { data: balance } = useBalance({ address });
 
-  const connect = () => {
-    setIsConnecting(true);
-    // Simulate connection delay
-    setTimeout(() => {
-      setAddress('0x71C...4f2D');
-      setIsConnecting(false);
-    }, 1500);
-  };
-
-  const disconnect = () => {
-    setAddress(null);
-  };
+  if (isConnected && address) {
+    return (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div style={{ textAlign: 'right', marginRight: '0.5rem' }}>
+          <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+            {address.slice(0, 6)}...{address.slice(-4)}
+          </div>
+          <div style={{ fontSize: '0.625rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
+            {balance?.formatted.slice(0, 6)} {balance?.symbol}
+          </div>
+        </div>
+        <Button 
+          variant="outline" 
+          onClick={() => disconnect()}
+          icon={<LogOut size={16} />}
+        >
+          LOG OUT
+        </Button>
+      </div>
+    );
+  }
 
   return (
-    <div style={{ position: 'relative' }}>
-      <AnimatePresence mode="wait">
-        {!address ? (
-          <motion.div
-            key="connect"
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -10 }}
-          >
-            <Button 
-              icon={<Wallet size={16} />} 
-              onClick={connect}
-              disabled={isConnecting}
-            >
-              {isConnecting ? 'CONNECTING...' : 'CONNECT WALLET'}
-            </Button>
-          </motion.div>
-        ) : (
-          <motion.div
-            key="address"
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -10 }}
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.75rem',
-              background: 'rgba(0, 240, 255, 0.08)',
-              border: '1px solid var(--border-active)',
-              padding: '0.5rem 1rem',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
-            onClick={disconnect}
-          >
-            <div style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%', boxShadow: '0 0 8px #10b981' }} />
-            <span className="mono" style={{ fontSize: '0.875rem', fontWeight: 600 }}>{address}</span>
-            <LogOut size={14} style={{ color: 'var(--text-dim)' }} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <Button 
+      variant="primary" 
+      onClick={() => connect({ connector: connectors[0] })}
+      disabled={isConnecting}
+      icon={isConnecting ? <Loader2 size={16} className="animate-spin" /> : <Wallet size={16} />}
+    >
+      {isConnecting ? 'HANDSHAKE...' : 'CONNECT_HUB'}
+    </Button>
   );
 };
