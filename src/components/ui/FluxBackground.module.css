@@ -1,0 +1,40 @@
+.container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #050505 100%);
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  filter: blur(1px);
+  opacity: 0.2;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black 30%, transparent 70%);
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.8) 100%);
+}
+
+.glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(80px);
+}

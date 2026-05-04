@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Sidebar } from "@/components/ui/Sidebar";
 import { Web3Provider } from "@/lib/Web3Provider";
 import { Loader } from "@/components/ui/Loader";
+import { FluxBackground } from "@/components/ui/FluxBackground";
 import { AnimatePresence } from "framer-motion";
 
 export function ClientLayout({ children }: { children: React.ReactNode }) {
@@ -16,6 +17,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           <Loader key="loader" onComplete={() => setIsLoading(false)} />
         ) : (
           <div key="content" style={{ display: 'flex' }}>
+            <FluxBackground />
             <Sidebar />
             <main style={{ marginLeft: '240px', minWidth: '0', flex: 1, minHeight: '100vh', padding: '2rem' }}>
               {children}
