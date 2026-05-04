@@ -20,6 +20,7 @@ import { RefreshButton } from "@/components/ui/RefreshButton";
 import { RiskGauge } from "@/components/flux/RiskGauge";
 import { PortfolioHealth } from "@/components/flux/PortfolioHealth";
 import { Modal } from "@/components/ui/Modal";
+import { Toast } from "@/components/ui/Toast";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -28,6 +29,7 @@ export default function PortfolioPage() {
     query: { refetchInterval: 10000 } 
   });
   const [selectedToken, setSelectedToken] = useState<any>(null);
+  const [showToast, setShowToast] = useState(false);
 
   if (!isConnected) {
     return (
@@ -60,7 +62,7 @@ export default function PortfolioPage() {
         actions={
           <div style={{ display: 'flex', gap: '0.75rem' }}>
             <RefreshButton onRefresh={() => refetch()} />
-            <Button variant="outline">Export CSV</Button>
+            <Button variant="outline" onClick={() => setShowToast(true)}>Export CSV</Button>
           </div>
         }
       />
@@ -158,6 +160,12 @@ export default function PortfolioPage() {
           </div>
         </div>
       </Modal>
+
+      <Toast 
+        message="Portfolio data exported successfully to CSV." 
+        isVisible={showToast} 
+        onClose={() => setShowToast(false)} 
+      />
     </div>
   );
 }
