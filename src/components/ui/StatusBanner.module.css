@@ -1,0 +1,39 @@
+.banner {
+  background: rgba(0, 240, 255, 0.03);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.1);
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.ticker {
+  display: flex;
+  gap: 2rem;
+  animation: ticker 30s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.625rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+}
+
+.label {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.value {
+  color: var(--text-primary);
+}
