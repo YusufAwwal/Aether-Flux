@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/Card";
 import { Brain, TrendingUp, AlertTriangle, Lightbulb, Activity, Shield } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { SentimentHeatmap } from "@/components/flux/SentimentHeatmap";
+import { RiskGauge } from "@/components/flux/RiskGauge";
 import { InsightModal } from "@/components/flux/InsightModal";
 
 export default function SignalsPage() {
@@ -65,6 +66,7 @@ export default function SignalsPage() {
         </Card>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <RiskGauge />
           <SentimentHeatmap />
           <Card title="PREDICTIVE MODELS" subtitle="Active neural nodes">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
