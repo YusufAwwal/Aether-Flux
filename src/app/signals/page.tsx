@@ -1,12 +1,16 @@
 'use client';
 
+import React, { useState } from 'react';
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Card } from "@/components/ui/Card";
 import { Brain, TrendingUp, AlertTriangle, Lightbulb, Activity, Shield } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { SentimentHeatmap } from "@/components/flux/SentimentHeatmap";
+import { InsightModal } from "@/components/flux/InsightModal";
 
 export default function SignalsPage() {
+  const [selectedInsight, setSelectedInsight] = useState<any>(null);
+
   return (
     <div>
       <PageHeader 
@@ -43,7 +47,11 @@ export default function SignalsPage() {
               { type: 'WARNING', icon: <AlertTriangle size={16} color="var(--accent-purple)" />, title: 'BTC Liquidity Gap', detail: 'Price level $64k shows thinning order books. Expect high slippage on large orders.', confidence: 'Medium' },
               { type: 'INSIGHT', icon: <Lightbulb size={16} color="var(--accent-cyan)" />, title: 'Stablecoin Velocity Spiking', detail: 'Increased USDC movement across bridges usually precedes major price action.', confidence: 'High' },
             ].map((sig, i) => (
-              <div key={i} style={{ background: 'var(--bg-card)', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px' }}>
+              <div 
+                key={i} 
+                onClick={() => setSelectedInsight(sig)}
+                style={{ background: 'var(--bg-card)', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', cursor: 'pointer', transition: 'var(--transition-fast)' }}
+              >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
                   {sig.icon}
                   <span style={{ fontSize: '0.625rem', fontWeight: 800, letterSpacing: '0.1em' }}>{sig.type}</span>
@@ -77,6 +85,12 @@ export default function SignalsPage() {
           </Card>
         </div>
       </div>
+
+      <InsightModal 
+        isOpen={!!selectedInsight} 
+        onClose={() => setSelectedInsight(null)} 
+        insight={selectedInsight} 
+      />
     </div>
   );
 }
