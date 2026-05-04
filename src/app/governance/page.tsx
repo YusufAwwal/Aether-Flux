@@ -1,10 +1,11 @@
 'use client';
 
+import React, { useState } from 'react';
 import { useAccount } from 'wagmi';
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Shield, Vote, Clock, CheckCircle2 } from "lucide-react";
+import { Shield, Vote, Clock, CheckCircle2, MessageSquare, User, Plus } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { VoteModal } from "@/components/flux/VoteModal";
 import { ProposalDiscussion } from "@/components/flux/ProposalDiscussion";
@@ -13,7 +14,7 @@ import { Handshake } from "@/components/flux/Handshake";
 import { DelegatePower } from "@/components/flux/DelegatePower";
 import { GovernanceScore } from "@/components/flux/GovernanceScore";
 import { CreateProposalModal } from "@/components/flux/CreateProposalModal";
-import { useState } from 'react';
+import { QuorumChart } from "@/components/flux/QuorumChart";
 
 export default function GovernancePage() {
   const { isConnected } = useAccount();
@@ -34,6 +35,12 @@ export default function GovernancePage() {
       </div>
     );
   }
+
+  const PROPOSALS = [
+    { id: 'AIP-42', title: 'Implement Cross-Chain Liquidity Vaults', status: 'ACTIVE', for: 1200000, against: 300000, ends: '2D 14H' },
+    { id: 'AIP-41', title: 'Update Gas Optimization Engine', status: 'ACTIVE', for: 840000, against: 120000, ends: '4D 02H' },
+    { id: 'AIP-40', title: 'New Asset Integration: $SOL', status: 'QUEUED', for: 0, against: 0, ends: 'Starts in 1D' },
+  ];
 
   return (
     <div>
@@ -74,11 +81,7 @@ export default function GovernancePage() {
           <ProposalTimeline />
           <Card title="ACTIVE PROPOSALS" subtitle="Decentralized voting queue">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              {[
-                { id: 'AIP-42', title: 'Implement Cross-Chain Liquidity Vaults', status: 'ACTIVE', votes: '1.2M / 2.5M', ends: '2D 14H' },
-                { id: 'AIP-41', title: 'Update Gas Optimization Engine', status: 'ACTIVE', votes: '840K / 2.5M', ends: '4D 02H' },
-                { id: 'AIP-40', title: 'New Asset Integration: $SOL', status: 'QUEUED', votes: '0 / 2.5M', ends: 'Starts in 1D' },
-              ].map((prop, i) => (
+              {PROPOSALS.map((prop, i) => (
                 <div key={i} style={{ background: 'var(--bg-card)', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
                     <div>
@@ -90,15 +93,9 @@ export default function GovernancePage() {
                     </div>
                   </div>
                   
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                     <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', marginBottom: '0.5rem' }}>
-                        <span style={{ color: 'var(--text-dim)' }}>QUORUM PROGRESS</span>
-                        <span className="mono">{prop.votes}</span>
-                      </div>
-                      <div style={{ height: '4px', background: 'rgba(255,255,255,0.05)', borderRadius: '2px', overflow: 'hidden' }}>
-                        <div style={{ height: '100%', width: i === 0 ? '48%' : i === 1 ? '33%' : '0%', background: 'var(--accent-cyan)' }} />
-                      </div>
+                      <QuorumChart forVotes={prop.for} againstVotes={prop.against} />
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.75rem', color: 'var(--text-dim)' }}>
                       <Clock size={14} />
