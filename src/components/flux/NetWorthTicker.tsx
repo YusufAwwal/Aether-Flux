@@ -2,12 +2,16 @@
 
 import React from 'react';
 
+import { ValueCounter } from '@/components/ui/ValueCounter';
+
 export const NetWorthTicker = ({ value }: { value: string }) => {
+  const numericValue = parseFloat(value.replace(/[^0-9.]/g, ''));
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <div style={{ fontSize: '0.625rem', color: 'var(--text-dim)', letterSpacing: '0.1em' }}>TOTAL NET WORTH</div>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '1rem' }}>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.02em' }}>{value}</h2>
+        <ValueCounter value={numericValue} />
         <div style={{ color: '#10b981', fontSize: '0.875rem', fontWeight: 700 }}>+12.4%</div>
       </div>
       <div style={{ display: 'flex', gap: '1rem' }}>
