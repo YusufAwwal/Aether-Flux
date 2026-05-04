@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState } from "react";
+
 import { Sidebar } from "@/components/ui/Sidebar";
+import { Topbar } from "@/components/ui/Topbar";
 import { Web3Provider } from "@/lib/Web3Provider";
 import { Loader } from "@/components/ui/Loader";
 import { FluxBackground } from "@/components/ui/FluxBackground";
@@ -16,15 +18,18 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
         {isLoading ? (
           <Loader key="loader" onComplete={() => setIsLoading(false)} />
         ) : (
-          <div key="content" style={{ display: 'flex' }}>
+          <div key="content" style={{ display: 'flex', minHeight: '100vh' }}>
             <div className="crtOverlay" />
             <div className="noiseOverlay" />
             <div className="scanline" />
             <FluxBackground />
             <Sidebar />
-            <main style={{ marginLeft: '240px', minWidth: '0', flex: 1, minHeight: '100vh', padding: '2rem' }}>
-              {children}
-            </main>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', marginLeft: '240px' }}>
+              <Topbar />
+              <main style={{ flex: 1, padding: '2rem', overflowX: 'hidden' }}>
+                {children}
+              </main>
+            </div>
           </div>
         )}
       </AnimatePresence>
