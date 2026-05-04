@@ -10,6 +10,7 @@ import { RiskGauge } from "@/components/flux/RiskGauge";
 import { NeuralPulse } from "@/components/flux/NeuralPulse";
 import { NeuralNetwork } from "@/components/flux/NeuralNetwork";
 import { SignalHistory } from "@/components/flux/SignalHistory";
+import { NeuralScan } from "@/components/flux/NeuralScan";
 import { InsightModal } from "@/components/flux/InsightModal";
 
 export default function SignalsPage() {
@@ -17,6 +18,7 @@ export default function SignalsPage() {
 
   return (
     <div>
+      <NeuralScan />
       <PageHeader 
         title="Neural Signals" 
         description="AI-driven market intelligence and predictive sentiment analysis."
