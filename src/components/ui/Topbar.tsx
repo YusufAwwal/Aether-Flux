@@ -1,7 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Search, Bell, Command } from 'lucide-react';
+
+import { Search, Bell, Command, Fuel } from 'lucide-react';
+import { GasTicker } from '../flux/GasTicker';
 import styles from './Topbar.module.css';
 
 export const Topbar = () => {
@@ -21,6 +23,8 @@ export const Topbar = () => {
       </div>
 
       <div className={styles.actions}>
+        <GasTicker />
+        <div style={{ width: '1px', height: '24px', background: 'var(--border-subtle)' }} />
         <button style={{ color: 'var(--text-secondary)', padding: '0.5rem' }}>
           <Bell size={18} />
         </button>
