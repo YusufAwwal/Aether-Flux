@@ -14,6 +14,7 @@ import { TokenIcon } from "@/components/ui/TokenIcon";
 import { NetWorthTicker } from "@/components/flux/NetWorthTicker";
 import { NFTGallery } from "@/components/flux/NFTGallery";
 import { TokenSearch } from "@/components/flux/TokenSearch";
+import { TradeGas } from "@/components/flux/TradeGas";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -91,6 +92,7 @@ export default function PortfolioPage() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <TradeGas />
           <AssetAllocation />
           <PerformanceChart />
           <YieldBreakdown />
