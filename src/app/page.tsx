@@ -3,6 +3,7 @@ import { StatWidget } from "@/components/ui/StatWidget";
 import { Button } from "@/components/ui/Button";
 import { ConnectWallet } from "@/components/ui/ConnectWallet";
 import { Terminal } from "@/components/flux/Terminal";
+import { FluxVisualizer } from "@/components/flux/FluxVisualizer";
 import { Activity, Zap, Shield, Globe } from "lucide-react";
 
 export default function Home() {
@@ -27,17 +28,8 @@ export default function Home() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
-        <div style={{ 
-          height: '400px', 
-          background: 'var(--bg-card)', 
-          borderRadius: '8px', 
-          border: 'var(--glass-border)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: 'var(--text-dim)'
-        }}>
-          [ Flux Activity Visualizer Placeholder ]
+        <div style={{ height: '400px' }}>
+          <FluxVisualizer />
         </div>
         <div style={{ height: '400px' }}>
           <Terminal />
