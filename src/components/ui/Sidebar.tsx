@@ -14,6 +14,7 @@ const NAV_ITEMS = [
   { icon: Wallet, label: 'PORTFOLIO HUB', href: '/portfolio' },
   { icon: Zap, label: 'YIELD OPTIMIZER', href: '/yield' },
   { icon: Shield, label: 'GOVERNANCE', href: '/governance' },
+  { icon: Brain, label: 'NEURAL SIGNALS', href: '/signals' },
   { icon: Settings, label: 'SYSTEM SETTINGS', href: '/settings' },
 ];
 
