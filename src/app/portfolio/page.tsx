@@ -12,6 +12,7 @@ import { PortfolioTx } from "@/components/flux/PortfolioTx";
 import { YieldBreakdown } from "@/components/flux/YieldBreakdown";
 import { TokenIcon } from "@/components/ui/TokenIcon";
 import { NetWorthTicker } from "@/components/flux/NetWorthTicker";
+import { NFTGallery } from "@/components/flux/NFTGallery";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -61,27 +62,30 @@ export default function PortfolioPage() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
-        <Card title="ASSET BREAKDOWN" subtitle="Real-time token distribution">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(255,255,255,0.05)' }}>
-            {[
-              { symbol: 'ETH', name: 'Ethereum', balance: ethBalance?.formatted.slice(0, 6), value: `$${(parseFloat(ethBalance?.formatted || '0') * 2482).toLocaleString()}`, color: 'var(--accent-cyan)' },
-              { symbol: 'USDC', name: 'USD Coin', balance: '1,240.00', value: '$1,240.00', color: '#2775ca' },
-              { symbol: 'LINK', name: 'Chainlink', balance: '45.12', value: '$842.12', color: '#375bd2' },
-            ].map((asset, i) => (
-              <div key={i} style={{ background: 'var(--bg-card)', padding: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <TokenIcon symbol={asset.symbol} color={asset.color} />
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 600 }}>{asset.name}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>{asset.balance} {asset.symbol}</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <Card title="ASSET BREAKDOWN" subtitle="Real-time token distribution">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(255,255,255,0.05)' }}>
+              {[
+                { symbol: 'ETH', name: 'Ethereum', balance: ethBalance?.formatted.slice(0, 6), value: `$${(parseFloat(ethBalance?.formatted || '0') * 2482).toLocaleString()}`, color: 'var(--accent-cyan)' },
+                { symbol: 'USDC', name: 'USD Coin', balance: '1,240.00', value: '$1,240.00', color: '#2775ca' },
+                { symbol: 'LINK', name: 'Chainlink', balance: '45.12', value: '$842.12', color: '#375bd2' },
+              ].map((asset, i) => (
+                <div key={i} style={{ background: 'var(--bg-card)', padding: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <TokenIcon symbol={asset.symbol} color={asset.color} />
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: 600 }}>{asset.name}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>{asset.balance} {asset.symbol}</div>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontWeight: 700 }}>{asset.value}</div>
+                    <div style={{ fontSize: '0.625rem', color: '#10b981' }}>+2.4%</div>
+                  </div>
                 </div>
-                <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontWeight: 700 }}>{asset.value}</div>
-                  <div style={{ fontSize: '0.625rem', color: '#10b981' }}>+2.4%</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </Card>
+              ))}
+            </div>
+          </Card>
+          <NFTGallery />
+        </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <AssetAllocation />
