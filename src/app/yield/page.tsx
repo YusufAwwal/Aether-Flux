@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { Zap, TrendingUp, ShieldCheck, ArrowRight } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { YieldCalculator } from "@/components/flux/YieldCalculator";
+import { YieldFlow } from "@/components/flux/YieldFlow";
 
 export default function YieldPage() {
   const { isConnected } = useAccount();
@@ -55,33 +56,36 @@ export default function YieldPage() {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
-        <Card title="ACTIVE STRATEGIES" subtitle="Optimized capital allocation">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(255,255,255,0.05)' }}>
-            {[
-              { name: 'Lido ETH Staking', platform: 'Lido', apy: '4.2%', tvl: '$12.4B', risk: 'LOW' },
-              { name: 'USDC/ETH LP', platform: 'Uniswap v3', apy: '18.5%', tvl: '$840M', risk: 'MEDIUM' },
-              { name: 'DAI Supply', platform: 'Aave v3', apy: '3.1%', tvl: '$2.1B', risk: 'LOW' },
-            ].map((strategy, i) => (
-              <div key={i} style={{ background: 'var(--bg-card)', padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 700 }}>{strategy.name}</div>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>PLATFORM: {strategy.platform}</div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <YieldFlow />
+          <Card title="ACTIVE STRATEGIES" subtitle="Optimized capital allocation">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(255,255,255,0.05)' }}>
+              {[
+                { name: 'Lido ETH Staking', platform: 'Lido', apy: '4.2%', tvl: '$12.4B', risk: 'LOW' },
+                { name: 'USDC/ETH LP', platform: 'Uniswap v3', apy: '18.5%', tvl: '$840M', risk: 'MEDIUM' },
+                { name: 'DAI Supply', platform: 'Aave v3', apy: '3.1%', tvl: '$2.1B', risk: 'LOW' },
+              ].map((strategy, i) => (
+                <div key={i} style={{ background: 'var(--bg-card)', padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: 700 }}>{strategy.name}</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>PLATFORM: {strategy.platform}</div>
+                  </div>
+                  <div style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '0.625rem', color: 'var(--text-dim)', marginBottom: '0.25rem' }}>TVL</div>
+                    <div className="mono" style={{ fontSize: '0.875rem', fontWeight: 600 }}>{strategy.tvl}</div>
+                  </div>
+                  <div style={{ textAlign: 'right', minWidth: '100px' }}>
+                    <div style={{ color: '#10b981', fontWeight: 800, fontSize: '1rem' }}>{strategy.apy} APY</div>
+                    <div style={{ fontSize: '0.625rem', color: strategy.risk === 'LOW' ? '#10b981' : 'var(--accent-purple)' }}>{strategy.risk} RISK</div>
+                  </div>
+                  <Button variant="outline" size="sm">
+                    <ArrowRight size={14} />
+                  </Button>
                 </div>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '0.625rem', color: 'var(--text-dim)', marginBottom: '0.25rem' }}>TVL</div>
-                  <div className="mono" style={{ fontSize: '0.875rem', fontWeight: 600 }}>{strategy.tvl}</div>
-                </div>
-                <div style={{ textAlign: 'right', minWidth: '100px' }}>
-                  <div style={{ color: '#10b981', fontWeight: 800, fontSize: '1rem' }}>{strategy.apy} APY</div>
-                  <div style={{ fontSize: '0.625rem', color: strategy.risk === 'LOW' ? '#10b981' : 'var(--accent-purple)' }}>{strategy.risk} RISK</div>
-                </div>
-                <Button variant="outline" size="sm">
-                  <ArrowRight size={14} />
-                </Button>
-              </div>
-            ))}
-          </div>
-        </Card>
+              ))}
+            </div>
+          </Card>
+        </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <YieldCalculator />
