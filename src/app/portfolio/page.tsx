@@ -9,6 +9,7 @@ import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { AssetAllocation } from "@/components/flux/AssetAllocation";
 import { PerformanceChart } from "@/components/flux/PerformanceChart";
 import { PortfolioTx } from "@/components/flux/PortfolioTx";
+import { YieldBreakdown } from "@/components/flux/YieldBreakdown";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -85,19 +86,7 @@ export default function PortfolioPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <AssetAllocation />
           <PerformanceChart />
-          <Card title="YIELD STREAMS" subtitle="Active positions">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: '0.875rem' }}>Lido Staked ETH</span>
-                <span className="mono" style={{ fontSize: '0.875rem', color: '#10b981' }}>4.2% APY</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: '0.875rem' }}>Aave v3 Supply</span>
-                <span className="mono" style={{ fontSize: '0.875rem', color: '#10b981' }}>2.1% APY</span>
-              </div>
-            </div>
-          </Card>
-          
+          <YieldBreakdown />
           <PortfolioTx />
         </div>
       </div>
