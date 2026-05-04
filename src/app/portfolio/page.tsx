@@ -13,6 +13,7 @@ import { YieldBreakdown } from "@/components/flux/YieldBreakdown";
 import { TokenIcon } from "@/components/ui/TokenIcon";
 import { NetWorthTicker } from "@/components/flux/NetWorthTicker";
 import { NFTGallery } from "@/components/flux/NFTGallery";
+import { TokenSearch } from "@/components/flux/TokenSearch";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -60,6 +61,8 @@ export default function PortfolioPage() {
           icon={<ArrowUpRight size={20} />} 
         />
       </div>
+
+      <TokenSearch />
 
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
