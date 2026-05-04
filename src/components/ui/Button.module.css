@@ -1,0 +1,47 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  font-size: 0.875rem;
+}
+
+.primary {
+  background: var(--accent-cyan);
+  color: var(--bg-dark);
+}
+
+.primary:hover {
+  background: #00d8e6;
+  box-shadow: 0 0 15px var(--accent-cyan-glow);
+}
+
+.outline {
+  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+}
+
+.outline:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.05);
+}
+
+.ghost {
+  color: var(--text-secondary);
+}
+
+.ghost:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.iconOnly {
+  padding: 0.5rem;
+}
