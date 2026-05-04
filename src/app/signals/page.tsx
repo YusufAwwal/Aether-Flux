@@ -7,6 +7,7 @@ import { Brain, TrendingUp, AlertTriangle, Lightbulb, Activity, Shield } from "l
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { SentimentHeatmap } from "@/components/flux/SentimentHeatmap";
 import { RiskGauge } from "@/components/flux/RiskGauge";
+import { NeuralPulse } from "@/components/flux/NeuralPulse";
 import { InsightModal } from "@/components/flux/InsightModal";
 
 export default function SignalsPage() {
@@ -42,26 +43,29 @@ export default function SignalsPage() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
         <Card title="INTELLIGENCE FEED" subtitle="Real-time predictive insights">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {[
-              { type: 'SIGNAL', icon: <TrendingUp size={16} color="#10b981" />, title: 'ETH L2 Accumulation Detected', detail: 'On-chain flow suggests institutional accumulation in Arbitrum/Optimism ecosystems.', confidence: 'High' },
-              { type: 'WARNING', icon: <AlertTriangle size={16} color="var(--accent-purple)" />, title: 'BTC Liquidity Gap', detail: 'Price level $64k shows thinning order books. Expect high slippage on large orders.', confidence: 'Medium' },
-              { type: 'INSIGHT', icon: <Lightbulb size={16} color="var(--accent-cyan)" />, title: 'Stablecoin Velocity Spiking', detail: 'Increased USDC movement across bridges usually precedes major price action.', confidence: 'High' },
-            ].map((sig, i) => (
-              <div 
-                key={i} 
-                onClick={() => setSelectedInsight(sig)}
-                style={{ background: 'var(--bg-card)', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', cursor: 'pointer', transition: 'var(--transition-fast)' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                  {sig.icon}
-                  <span style={{ fontSize: '0.625rem', fontWeight: 800, letterSpacing: '0.1em' }}>{sig.type}</span>
-                  <span className="mono" style={{ marginLeft: 'auto', fontSize: '0.625rem', color: 'var(--text-dim)' }}>CONFIDENCE: {sig.confidence}</span>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <NeuralPulse />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              {[
+                { type: 'SIGNAL', icon: <TrendingUp size={16} color="#10b981" />, title: 'ETH L2 Accumulation Detected', detail: 'On-chain flow suggests institutional accumulation in Arbitrum/Optimism ecosystems.', confidence: 'High' },
+                { type: 'WARNING', icon: <AlertTriangle size={16} color="var(--accent-purple)" />, title: 'BTC Liquidity Gap', detail: 'Price level $64k shows thinning order books. Expect high slippage on large orders.', confidence: 'Medium' },
+                { type: 'INSIGHT', icon: <Lightbulb size={16} color="var(--accent-cyan)" />, title: 'Stablecoin Velocity Spiking', detail: 'Increased USDC movement across bridges usually precedes major price action.', confidence: 'High' },
+              ].map((sig, i) => (
+                <div 
+                  key={i} 
+                  onClick={() => setSelectedInsight(sig)}
+                  style={{ background: 'var(--bg-card)', padding: '1.5rem', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '8px', cursor: 'pointer', transition: 'var(--transition-fast)' }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                    {sig.icon}
+                    <span style={{ fontSize: '0.625rem', fontWeight: 800, letterSpacing: '0.1em' }}>{sig.type}</span>
+                    <span className="mono" style={{ marginLeft: 'auto', fontSize: '0.625rem', color: 'var(--text-dim)' }}>CONFIDENCE: {sig.confidence}</span>
+                  </div>
+                  <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem' }}>{sig.title}</div>
+                  <p style={{ fontSize: '0.875rem', color: 'var(--text-dim)', lineHeight: 1.5 }}>{sig.detail}</p>
                 </div>
-                <div style={{ fontWeight: 700, fontSize: '1rem', marginBottom: '0.5rem' }}>{sig.title}</div>
-                <p style={{ fontSize: '0.875rem', color: 'var(--text-dim)', lineHeight: 1.5 }}>{sig.detail}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </Card>
 
