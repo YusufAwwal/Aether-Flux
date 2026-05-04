@@ -18,6 +18,7 @@ import { TokenSearch } from "@/components/flux/TokenSearch";
 import { TradeGas } from "@/components/flux/TradeGas";
 import { RefreshButton } from "@/components/ui/RefreshButton";
 import { RiskGauge } from "@/components/flux/RiskGauge";
+import { PortfolioHealth } from "@/components/flux/PortfolioHealth";
 import { Modal } from "@/components/ui/Modal";
 
 export default function PortfolioPage() {
@@ -118,6 +119,8 @@ export default function PortfolioPage() {
           <PortfolioTx />
         </div>
       </div>
+
+      <PortfolioHealth />
 
       <Modal 
         isOpen={!!selectedToken} 
