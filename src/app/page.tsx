@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/ui/PageHeader";
 import { StatWidget } from "@/components/ui/StatWidget";
 import { Button } from "@/components/ui/Button";
+import { ConnectWallet } from "@/components/ui/ConnectWallet";
 import { Activity, Zap, Shield, Globe } from "lucide-react";
 
 export default function Home() {
@@ -12,7 +13,7 @@ export default function Home() {
         actions={
           <>
             <Button variant="outline" icon={<Globe size={16} />}>Scan Network</Button>
-            <Button icon={<Zap size={16} />}>Quick Action</Button>
+            <ConnectWallet />
           </>
         }
       />
