@@ -2,11 +2,15 @@
 
 import React from 'react';
 
-import { Search, Bell, Command, Fuel } from 'lucide-react';
+import { Search, Bell, Command, Fuel, Info } from 'lucide-react';
 import { GasTicker } from '../flux/GasTicker';
+import { SystemInfoModal } from './SystemInfoModal';
+import { useState } from 'react';
 import styles from './Topbar.module.css';
 
 export const Topbar = () => {
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
+
   return (
     <header className={styles.topbar}>
       <div className={styles.search}>
@@ -25,6 +29,12 @@ export const Topbar = () => {
       <div className={styles.actions}>
         <GasTicker />
         <div style={{ width: '1px', height: '24px', background: 'var(--border-subtle)' }} />
+        <button 
+          onClick={() => setIsInfoOpen(true)}
+          style={{ color: 'var(--text-secondary)', padding: '0.5rem' }}
+        >
+          <Info size={18} />
+        </button>
         <button style={{ color: 'var(--text-secondary)', padding: '0.5rem' }}>
           <Bell size={18} />
         </button>
@@ -37,6 +47,8 @@ export const Topbar = () => {
           <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'linear-gradient(45deg, var(--accent-cyan), var(--accent-purple))' }} />
         </div>
       </div>
+
+      <SystemInfoModal isOpen={isInfoOpen} onClose={() => setIsInfoOpen(false)} />
     </header>
   );
 };
