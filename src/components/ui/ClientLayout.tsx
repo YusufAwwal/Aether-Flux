@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/ui/Sidebar";
 import { Topbar } from "@/components/ui/Topbar";
 import { StatusBanner } from "@/components/ui/StatusBanner";
 import { Footer } from "@/components/ui/Footer";
+import { QuickActions } from "@/components/ui/QuickActions";
 import { CommandPalette } from "@/components/ui/CommandPalette";
 import { Web3Provider } from "@/lib/Web3Provider";
 import { Loader } from "@/components/ui/Loader";
@@ -34,6 +35,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
               <main style={{ flex: 1, padding: '2rem', paddingBottom: '4rem', overflowX: 'hidden' }}>
                 {children}
               </main>
+              <QuickActions />
               <Footer />
             </div>
           </div>
