@@ -10,6 +10,7 @@ import { RiskGauge } from "@/components/flux/RiskGauge";
 import { NeuralPulse } from "@/components/flux/NeuralPulse";
 import { NeuralNetwork } from "@/components/flux/NeuralNetwork";
 import { SignalHistory } from "@/components/flux/SignalHistory";
+import { CorrelationMatrix } from "@/components/flux/CorrelationMatrix";
 import { NeuralScan } from "@/components/flux/NeuralScan";
 import { InsightModal } from "@/components/flux/InsightModal";
 
@@ -76,6 +77,7 @@ export default function SignalsPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <NeuralNetwork />
           <RiskGauge />
+          <CorrelationMatrix />
           <SentimentHeatmap />
           <Card title="PREDICTIVE MODELS" subtitle="Active neural nodes">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
