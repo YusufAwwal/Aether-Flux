@@ -1,0 +1,19 @@
+.container {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.bar {
+  flex: 1;
+  background: var(--accent-cyan);
+  opacity: 0.3;
+  transition: height 0.5s ease;
+  border-radius: 1px 1px 0 0;
+}
+
+.bar:hover {
+  opacity: 0.8;
+}

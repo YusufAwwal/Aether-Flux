@@ -1,8 +1,10 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+
 import { Gauge } from '../ui/Gauge';
 import { Card } from '../ui/Card';
+import { GasChart } from './GasChart';
 
 export const MetricsGrid = () => {
   const [metrics, setMetrics] = useState({
@@ -28,7 +30,10 @@ export const MetricsGrid = () => {
   return (
     <Card className="glass" style={{ padding: '1.5rem' }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
-        <Gauge value={metrics.gas} max={100} label="GAS PRICE" unit="G" />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <Gauge value={metrics.gas} max={100} label="GAS PRICE" unit="G" />
+          <GasChart />
+        </div>
         <Gauge value={metrics.tps} max={2000} label="TPS" />
         <Gauge value={metrics.load} max={100} label="NET LOAD" unit="%" />
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
