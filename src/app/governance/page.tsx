@@ -9,11 +9,13 @@ import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { VoteModal } from "@/components/flux/VoteModal";
 import { ProposalDiscussion } from "@/components/flux/ProposalDiscussion";
 import { DelegatePower } from "@/components/flux/DelegatePower";
+import { CreateProposalModal } from "@/components/flux/CreateProposalModal";
 import { useState } from 'react';
 
 export default function GovernancePage() {
   const { isConnected } = useAccount();
   const [selectedProposal, setSelectedProposal] = useState<any>(null);
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
 
   if (!isConnected) {
     return (
@@ -35,6 +37,12 @@ export default function GovernancePage() {
       <PageHeader 
         title="Protocol Governance" 
         description="Participate in decentralized decision making and proposal voting."
+        actions={
+          <Button variant="primary" onClick={() => setIsCreateOpen(true)}>
+            <Plus size={16} style={{ marginRight: '0.5rem' }} />
+            NEW PROPOSAL
+          </Button>
+        }
       />
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2.5rem' }}>
@@ -120,6 +128,11 @@ export default function GovernancePage() {
         isOpen={!!selectedProposal} 
         onClose={() => setSelectedProposal(null)} 
         proposal={selectedProposal} 
+      />
+
+      <CreateProposalModal 
+        isOpen={isCreateOpen} 
+        onClose={() => setIsCreateOpen(false)} 
       />
     </div>
   );
