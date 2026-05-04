@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/Card";
 import { Wallet, TrendingUp, ArrowUpRight, ArrowDownLeft } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { AssetAllocation } from "@/components/flux/AssetAllocation";
+import { PerformanceChart } from "@/components/flux/PerformanceChart";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -82,6 +83,7 @@ export default function PortfolioPage() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <AssetAllocation />
+          <PerformanceChart />
           <Card title="YIELD STREAMS" subtitle="Active positions">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between' }}>
