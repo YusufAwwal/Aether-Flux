@@ -15,7 +15,10 @@ import { NetWorthTicker } from "@/components/flux/NetWorthTicker";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
-  const { data: ethBalance } = useBalance({ address });
+  const { data: ethBalance } = useBalance({ 
+    address,
+    query: { refetchInterval: 10000 } 
+  });
 
   if (!isConnected) {
     return (
