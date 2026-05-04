@@ -5,6 +5,7 @@ import { Terminal } from "@/components/flux/Terminal";
 import { FluxVisualizer } from "@/components/flux/FluxVisualizer";
 import { FluxStream } from "@/components/flux/FluxStream";
 import { MetricsGrid } from "@/components/flux/MetricsGrid";
+import { WhaleAlert } from "@/components/flux/WhaleAlert";
 import { Activity, Zap, Shield, Globe } from "lucide-react";
 
 export default function Home() {
@@ -57,6 +58,8 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <WhaleAlert />
     </div>
   );
 }
