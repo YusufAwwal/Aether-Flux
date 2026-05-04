@@ -11,6 +11,7 @@ import { PerformanceChart } from "@/components/flux/PerformanceChart";
 import { PortfolioTx } from "@/components/flux/PortfolioTx";
 import { YieldBreakdown } from "@/components/flux/YieldBreakdown";
 import { TokenIcon } from "@/components/ui/TokenIcon";
+import { NetWorthTicker } from "@/components/flux/NetWorthTicker";
 
 export default function PortfolioPage() {
   const { address, isConnected } = useAccount();
@@ -31,6 +32,8 @@ export default function PortfolioPage() {
     );
   }
 
+  const netWorthValue = `$${(parseFloat(ethBalance?.formatted || '0') * 2482).toLocaleString()}`;
+
   return (
     <div>
       <PageHeader 
@@ -38,13 +41,8 @@ export default function PortfolioPage() {
         description="Comprehensive asset tracking and yield performance analysis."
       />
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', marginBottom: '2.5rem' }}>
-        <AnimatedStat 
-          label="Total Net Worth" 
-          value={`$${(parseFloat(ethBalance?.formatted || '0') * 2482).toLocaleString()}`} 
-          change={4.2} 
-          icon={<TrendingUp size={20} />} 
-        />
+      <div style={{ marginBottom: '2.5rem', display: 'grid', gridTemplateColumns: '1.5fr 1fr 1fr', gap: '1.5rem', alignItems: 'end' }}>
+        <NetWorthTicker value={netWorthValue} />
         <AnimatedStat 
           label="24H Performance" 
           value="+$242.12" 
