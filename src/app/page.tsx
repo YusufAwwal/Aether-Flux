@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { ConnectWallet } from "@/components/ui/ConnectWallet";
 import { Terminal } from "@/components/flux/Terminal";
 import { FluxVisualizer } from "@/components/flux/FluxVisualizer";
+import { FluxStream } from "@/components/flux/FluxStream";
 import { MetricsGrid } from "@/components/flux/MetricsGrid";
 import { Activity, Zap, Shield, Globe } from "lucide-react";
 
@@ -24,12 +25,36 @@ export default function Home() {
         <MetricsGrid />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
-        <div style={{ height: '400px' }}>
-          <FluxVisualizer />
+      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div style={{ height: '300px' }}>
+            <FluxVisualizer />
+          </div>
+          <FluxStream />
         </div>
-        <div style={{ height: '400px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <Terminal />
+          <div style={{ 
+            flex: 1, 
+            background: 'var(--bg-card)', 
+            borderRadius: '8px', 
+            border: 'var(--glass-border)',
+            padding: '1.5rem',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            gap: '1rem'
+          }}>
+            <h4 style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.1em' }}>QUICK STATS</h4>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>Active Nodes</span>
+              <span className="mono" style={{ fontSize: '0.875rem', fontWeight: 600 }}>12,842</span>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)' }}>Block Height</span>
+              <span className="mono" style={{ fontSize: '0.875rem', fontWeight: 600 }}>18,492,021</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
