@@ -8,6 +8,7 @@ import { MetricsGrid } from "@/components/flux/MetricsGrid";
 import { WhaleAlert } from "@/components/flux/WhaleAlert";
 import { GasHeatmap } from "@/components/flux/GasHeatmap";
 import { ProtocolStats } from "@/components/flux/ProtocolStats";
+import { MarketDominance } from "@/components/flux/MarketDominance";
 import { Activity, Zap, Shield, Globe } from "lucide-react";
 
 export default function Home() {
@@ -39,6 +40,7 @@ export default function Home() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <Terminal />
           <ProtocolStats />
+          <MarketDominance />
           <div style={{ 
             background: 'var(--bg-card)', 
             borderRadius: '8px', 
