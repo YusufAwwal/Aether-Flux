@@ -19,11 +19,14 @@ interface Transaction {
 
 export const FluxStream = () => {
   const [selectedTx, setSelectedTx] = useState<Transaction | null>(null);
+  const [filter, setFilter] = useState<'all' | 'in' | 'out'>('all');
   const [txs, setTxs] = useState<Transaction[]>([
     { id: '1', hash: '0x4a2...f89', method: 'Swap', value: '1.2 ETH', type: 'out', from: '0x123...abc', to: '0x456...def', timestamp: new Date().toISOString() },
     { id: '2', hash: '0x71c...4f2', method: 'Transfer', value: '500 USDT', type: 'in', from: '0x789...ghi', to: '0x123...abc', timestamp: new Date().toISOString() },
     { id: '3', hash: '0x9d2...a11', method: 'Mint', value: '0.05 ETH', type: 'out', from: '0x000...000', to: '0x123...abc', timestamp: new Date().toISOString() },
   ]);
+
+  const filteredTxs = txs.filter(tx => filter === 'all' || tx.type === filter);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -50,11 +53,29 @@ export const FluxStream = () => {
           <Activity size={18} color="var(--accent-cyan)" />
           <h3 style={{ fontSize: '1rem', fontWeight: 600 }}>FLUX STREAM</h3>
         </div>
-        <span className="mono" style={{ fontSize: '0.75rem', color: 'var(--text-dim)' }}>LIVE_FEED</span>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          {(['all', 'in', 'out'] as const).map(f => (
+            <button 
+              key={f}
+              onClick={() => setFilter(f)}
+              style={{ 
+                fontSize: '0.625rem', 
+                padding: '0.25rem 0.5rem', 
+                borderRadius: '4px',
+                background: filter === f ? 'rgba(0, 240, 255, 0.1)' : 'transparent',
+                border: `1px solid ${filter === f ? 'var(--accent-cyan)' : 'transparent'}`,
+                color: filter === f ? 'var(--accent-cyan)' : 'var(--text-dim)',
+                textTransform: 'uppercase'
+              }}
+            >
+              {f}
+            </button>
+          ))}
+        </div>
       </div>
       <div className={styles.list}>
         <AnimatePresence initial={false}>
-          {txs.map((tx) => (
+          {filteredTxs.map((tx) => (
             <motion.div
               key={tx.id}
               className={styles.item}
