@@ -8,6 +8,7 @@ import { Shield, Vote, Clock, CheckCircle2 } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
 import { VoteModal } from "@/components/flux/VoteModal";
 import { ProposalDiscussion } from "@/components/flux/ProposalDiscussion";
+import { DelegatePower } from "@/components/flux/DelegatePower";
 import { useState } from 'react';
 
 export default function GovernancePage() {
@@ -100,16 +101,19 @@ export default function GovernancePage() {
           <ProposalDiscussion />
         </div>
 
-        <Card title="VOTING HISTORY" subtitle="Your governance activity">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {[1, 2, 3].map(i => (
-              <div key={i} style={{ borderLeft: '2px solid rgba(255,255,255,0.1)', paddingLeft: '1rem' }}>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.25rem' }}>VOTED FOR AIP-{39-i}</div>
-                <div style={{ fontSize: '0.625rem', color: 'var(--text-dim)' }}>EXECUTED 12D AGO</div>
-              </div>
-            ))}
-          </div>
-        </Card>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <DelegatePower />
+          <Card title="VOTING HISTORY" subtitle="Your governance activity">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {[1, 2, 3].map(i => (
+                <div key={i} style={{ borderLeft: '2px solid rgba(255,255,255,0.1)', paddingLeft: '1rem' }}>
+                  <div style={{ fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.25rem' }}>VOTED FOR AIP-{39-i}</div>
+                  <div style={{ fontSize: '0.625rem', color: 'var(--text-dim)' }}>EXECUTED 12D AGO</div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
       </div>
 
       <VoteModal 
