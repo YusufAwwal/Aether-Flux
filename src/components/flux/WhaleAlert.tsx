@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ShieldAlert } from 'lucide-react';
+import { AlertPulse } from './AlertPulse';
 import styles from './WhaleAlert.module.css';
 
 const ALERTS = [
@@ -33,6 +34,9 @@ export const WhaleAlert = () => {
       >
         <div className={styles.pulse} />
         <div className={styles.icon}>
+          <div style={{ position: 'absolute', top: '-4px', right: '-4px' }}>
+            <AlertPulse />
+          </div>
           <ShieldAlert size={24} />
         </div>
         <div className={styles.content}>
