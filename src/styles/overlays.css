@@ -1,0 +1,47 @@
+.crtOverlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 3px, 3px 100%;
+  opacity: 0.3;
+}
+
+.noiseOverlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 998;
+  opacity: 0.03;
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+}
+
+.scanline {
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1000;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 240, 255, 0) 0%,
+    rgba(0, 240, 255, 0.05) 50%,
+    rgba(0, 240, 255, 0) 100%
+  );
+  background-size: 100% 200px;
+  animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100%); }
+}

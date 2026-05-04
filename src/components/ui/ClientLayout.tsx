@@ -17,6 +17,9 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           <Loader key="loader" onComplete={() => setIsLoading(false)} />
         ) : (
           <div key="content" style={{ display: 'flex' }}>
+            <div className="crtOverlay" />
+            <div className="noiseOverlay" />
+            <div className="scanline" />
             <FluxBackground />
             <Sidebar />
             <main style={{ marginLeft: '240px', minWidth: '0', flex: 1, minHeight: '100vh', padding: '2rem' }}>
