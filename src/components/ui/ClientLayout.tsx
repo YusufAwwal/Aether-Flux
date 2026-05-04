@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { Sidebar } from "@/components/ui/Sidebar";
 import { Topbar } from "@/components/ui/Topbar";
 import { StatusBanner } from "@/components/ui/StatusBanner";
+import { CommandPalette } from "@/components/ui/CommandPalette";
 import { Web3Provider } from "@/lib/Web3Provider";
 import { Loader } from "@/components/ui/Loader";
 import { FluxBackground } from "@/components/ui/FluxBackground";
@@ -20,6 +21,7 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
           <Loader key="loader" onComplete={() => setIsLoading(false)} />
         ) : (
           <div key="content" style={{ display: 'flex', minHeight: '100vh' }}>
+            <CommandPalette />
             <div className="crtOverlay" />
             <div className="noiseOverlay" />
             <div className="scanline" />
