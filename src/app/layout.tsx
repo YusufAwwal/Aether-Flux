@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Sidebar } from "@/components/ui/Sidebar";
+import { ClientLayout } from "@/components/ui/ClientLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,10 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Sidebar />
-        <main style={{ marginLeft: '240px', minHeight: '100vh', padding: '2rem' }}>
+        <ClientLayout>
           {children}
-        </main>
+        </ClientLayout>
       </body>
     </html>
   );
