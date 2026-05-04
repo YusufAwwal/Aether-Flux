@@ -41,12 +41,12 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-subtle);
+  background: rgba(0, 240, 255, 0.2);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-dim);
+  background: rgba(0, 240, 255, 0.4);
 }
 
 /* Utility Classes */
