@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Zap, TrendingUp, ShieldCheck, ArrowRight } from "lucide-react";
 import { AnimatedStat } from "@/components/ui/AnimatedStat";
+import { YieldCalculator } from "@/components/flux/YieldCalculator";
 
 export default function YieldPage() {
   const { isConnected } = useAccount();
@@ -82,15 +83,18 @@ export default function YieldPage() {
           </div>
         </Card>
 
-        <Card title="OPTIMIZER LOGS" subtitle="Neural engine activity">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxHeight: '300px', overflowY: 'auto' }}>
-            {[1, 2, 3, 4, 5].map(i => (
-              <div key={i} style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', borderLeft: '2px solid var(--accent-cyan)', paddingLeft: '0.75rem', color: 'var(--text-dim)' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>[SYSTEM]</span> Rebalancing Uniswap v3 position... SUCCESS
-              </div>
-            ))}
-          </div>
-        </Card>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <YieldCalculator />
+          <Card title="OPTIMIZER LOGS" subtitle="Neural engine activity">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxHeight: '200px', overflowY: 'auto' }}>
+              {[1, 2, 3, 4, 5].map(i => (
+                <div key={i} style={{ fontSize: '0.75rem', fontFamily: 'var(--font-mono)', borderLeft: '2px solid var(--accent-cyan)', paddingLeft: '0.75rem', color: 'var(--text-dim)' }}>
+                  <span style={{ color: 'var(--accent-cyan)' }}>[SYSTEM]</span> Rebalancing Uniswap v3 position... SUCCESS
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   );
