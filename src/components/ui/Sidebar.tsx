@@ -3,13 +3,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, Activity, Wallet, Shield, Settings, Zap } from 'lucide-react';
+import { LayoutDashboard, Activity, Wallet, Shield, Settings, Zap, ShieldAlert } from 'lucide-react';
 import clsx from 'clsx';
 import styles from './Sidebar.module.css';
 
 const NAV_ITEMS = [
   { icon: LayoutDashboard, label: 'NETWORK OVERVIEW', href: '/' },
   { icon: Activity, label: 'FLUX STREAM', href: '/flux' },
+  { icon: ShieldAlert, label: 'WHALE ALERTS', href: '/alerts' },
   { icon: Wallet, label: 'PORTFOLIO HUB', href: '/portfolio' },
   { icon: Shield, label: 'GOVERNANCE', href: '/governance' },
   { icon: Settings, label: 'SYSTEM SETTINGS', href: '/settings' },
