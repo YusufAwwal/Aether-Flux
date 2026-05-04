@@ -12,6 +12,7 @@ import { YieldComparison } from "@/components/flux/YieldComparison";
 import { YieldHealth } from "@/components/flux/YieldHealth";
 import { ValidatorStats } from "@/components/flux/ValidatorStats";
 import { YieldTimeline } from "@/components/flux/YieldTimeline";
+import { YieldRadar } from "@/components/flux/YieldRadar";
 
 export default function YieldPage() {
   const { isConnected } = useAccount();
@@ -93,6 +94,7 @@ export default function YieldPage() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <YieldRadar />
           <YieldComparison />
           <ValidatorStats />
           <YieldCalculator />
