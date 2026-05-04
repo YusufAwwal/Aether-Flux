@@ -1,0 +1,53 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { LayoutDashboard, Activity, Wallet, Shield, Settings, Zap } from 'lucide-react';
+import clsx from 'clsx';
+import styles from './Sidebar.module.css';
+
+const NAV_ITEMS = [
+  { icon: LayoutDashboard, label: 'Overview', href: '/' },
+  { icon: Activity, label: 'Flux Stream', href: '/flux' },
+  { icon: Wallet, label: 'Portfolio', href: '/portfolio' },
+  { icon: Shield, label: 'Governance', href: '/governance' },
+  { icon: Settings, label: 'Settings', href: '/settings' },
+];
+
+export const Sidebar = () => {
+  const pathname = usePathname();
+
+  return (
+    <aside className={styles.sidebar}>
+      <div className={styles.logo}>
+        <Zap className={styles.logoIcon} size={24} color="var(--accent-cyan)" fill="var(--accent-cyan)" />
+        <span className={styles.logoText}>AETHER</span>
+      </div>
+
+      <nav className={styles.nav}>
+        {NAV_ITEMS.map((item) => {
+          const Icon = item.icon;
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={clsx(styles.navItem, isActive && styles.active)}
+            >
+              <Icon size={18} />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className={styles.footer}>
+        <div className={styles.status}>
+          <div className={styles.pulse} />
+          <span className="mono">NETWORK: ETHEREUM</span>
+        </div>
+      </div>
+    </aside>
+  );
+};
