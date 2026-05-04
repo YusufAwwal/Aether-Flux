@@ -2,6 +2,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { FluxStream } from "@/components/flux/FluxStream";
 import { FluxVisualizer } from "@/components/flux/FluxVisualizer";
 import { Terminal } from "@/components/flux/Terminal";
+import { LiquidityFlow } from "@/components/flux/LiquidityFlow";
 import { Card } from "@/components/ui/Card";
 
 export default function FluxPage() {
@@ -21,6 +22,7 @@ export default function FluxPage() {
         </div>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <LiquidityFlow />
           <Terminal />
           <Card title="NETWORK NODES" subtitle="Active synchronization status">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
