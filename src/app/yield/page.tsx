@@ -11,6 +11,7 @@ import { YieldFlow } from "@/components/flux/YieldFlow";
 import { YieldComparison } from "@/components/flux/YieldComparison";
 import { YieldHealth } from "@/components/flux/YieldHealth";
 import { ValidatorStats } from "@/components/flux/ValidatorStats";
+import { YieldTimeline } from "@/components/flux/YieldTimeline";
 
 export default function YieldPage() {
   const { isConnected } = useAccount();
@@ -61,6 +62,7 @@ export default function YieldPage() {
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1.5rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <YieldFlow />
+          <YieldTimeline />
           <Card title="ACTIVE STRATEGIES" subtitle="Optimized capital allocation">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1px', background: 'rgba(255,255,255,0.05)' }}>
               {[
